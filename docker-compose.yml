@@ -1,0 +1,26 @@
+version: '3.8'
+services:
+  postgres:
+    image: postgres:latest
+    restart: always
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+    ports:
+      - '5432:5432'
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+  mariadb:
+    image: mariadb
+    environment:
+      MYSQL_ROOT_PASSWORD: admin
+      MYSQL_DATABASE: users
+      MYSQL_USER: mariadb
+      MYSQL_PASSWORD: mariadb
+    volumes:
+      - mariadb_data:/var/lib/mysql
+    ports:
+      - "3306:3306"
+volumes:
+  postgres_data: { }
+  mariadb_data: { }
